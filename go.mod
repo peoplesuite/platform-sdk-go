@@ -2,8 +2,6 @@ module github.com/peoplesuite/platform-sdk-go
 
 go 1.25.0
 
-replace peoplesuite/platform-contracts => ../platform-contracts
-
 require (
 	github.com/BurntSushi/toml v1.4.1-0.20240526193622-a339e1f7089c
 	github.com/DataDog/datadog-go/v5 v5.5.0
@@ -21,7 +19,7 @@ require (
 	google.golang.org/grpc v1.79.2
 	gopkg.in/DataDog/dd-trace-go.v1 v1.61.0
 	gopkg.in/yaml.v3 v3.0.1
-	peoplesuite/platform-contracts v0.0.0
+	peoplesuite/platform-contracts v0.0.0-20260311164747-32def9eae9ad
 )
 
 require (
