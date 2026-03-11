@@ -2,33 +2,77 @@ package devtools
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"os"
+	"sync"
 
 	"github.com/fullstorydev/grpcui/standalone"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
 
-// NewGRPCUIHandler creates an HTTP handler that serves grpcui backed by server reflection.
-// If no dial options are provided, it dials the target with insecure transport credentials.
-func NewGRPCUIHandler(ctx context.Context, target string, opts ...grpc.DialOption) (http.Handler, error) {
-	if ctx == nil {
-		ctx = context.Background()
-	}
+// lazyGRPCUIHandler defers connecting to the gRPC target until the first request.
+// This avoids startup races where the HTTP server is constructed before the
+// gRPC server has begun listening, which would otherwise cause an immediate
+// connection failure and prevent /grpcui from being registered at all.
+type lazyGRPCUIHandler struct {
+	mu     sync.Mutex
+	init   sync.Once
+	ctx    context.Context
+	target string
+	opts   []grpc.DialOption
 
-	if len(opts) == 0 {
-		opts = []grpc.DialOption{
-			grpc.WithTransportCredentials(insecure.NewCredentials()),
+	inner http.Handler
+	err   error
+}
+
+func (h *lazyGRPCUIHandler) ensureInitialized() {
+	h.init.Do(func() {
+		ctx := h.ctx
+		if ctx == nil {
+			ctx = context.Background()
 		}
+
+		opts := h.opts
+		if len(opts) == 0 {
+			opts = []grpc.DialOption{
+				grpc.WithTransportCredentials(insecure.NewCredentials()),
+			}
+		}
+
+		conn, err := grpc.DialContext(ctx, h.target, opts...)
+		if err != nil {
+			h.err = err
+			return
+		}
+
+		h.inner, h.err = standalone.HandlerViaReflection(ctx, conn, h.target)
+	})
+}
+
+func (h *lazyGRPCUIHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	h.ensureInitialized()
+
+	if h.err != nil {
+		w.WriteHeader(http.StatusServiceUnavailable)
+		_, _ = fmt.Fprintf(w, "grpcui is not available yet: %v", h.err)
+		return
 	}
 
-	conn, err := grpc.NewClient(target, opts...)
-	if err != nil {
-		return nil, err
-	}
+	h.inner.ServeHTTP(w, r)
+}
 
-	return standalone.HandlerViaReflection(ctx, conn, target)
+// NewGRPCUIHandler creates an HTTP handler that serves grpcui backed by server reflection.
+// Unlike the original implementation, this version defers dialing the target until the
+// first request is received, so that /grpcui can always be registered at startup even if
+// the gRPC server is not yet ready to accept connections.
+func NewGRPCUIHandler(ctx context.Context, target string, opts ...grpc.DialOption) (http.Handler, error) {
+	return &lazyGRPCUIHandler{
+		ctx:    ctx,
+		target: target,
+		opts:   opts,
+	}, nil
 }
 
 // ProtoDocsHandler serves static documentation generated from protobuf definitions.

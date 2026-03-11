@@ -2,6 +2,8 @@ module github.com/peoplesuite/platform-sdk-go
 
 go 1.25.0
 
+replace peoplesuite/platform-contracts => ../platform-contracts
+
 require (
 	github.com/BurntSushi/toml v1.4.1-0.20240526193622-a339e1f7089c
 	github.com/DataDog/datadog-go/v5 v5.5.0
@@ -16,9 +18,10 @@ require (
 	go.opentelemetry.io/otel v1.41.0
 	go.opentelemetry.io/otel/trace v1.41.0
 	go.uber.org/zap v1.27.0
-	google.golang.org/grpc v1.79.1
+	google.golang.org/grpc v1.79.2
 	gopkg.in/DataDog/dd-trace-go.v1 v1.61.0
 	gopkg.in/yaml.v3 v3.0.1
+	peoplesuite/platform-contracts v0.0.0
 )
 
 require (
