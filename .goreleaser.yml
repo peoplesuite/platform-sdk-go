@@ -1,0 +1,7 @@
+# Minimal config for library release: create GitHub release with changelog, no binaries.
+# https://goreleaser.com/cookbooks/release-a-library/
+version: 2
+project_name: platform-sdk-go
+
+builds:
+  - skip: true

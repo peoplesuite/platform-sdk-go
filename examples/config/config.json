@@ -1,0 +1,5 @@
+{
+  "service": "example-service",
+  "port": 9000,
+  "debug": true
+}
