@@ -7,8 +7,9 @@ import (
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 
-	sdkgrpc "github.com/peoplesuite/platform-sdk-go/pkg/grpc"
 	preferencesv1 "peoplesuite/platform-contracts/gen/go/preferences/v1"
+
+	sdkgrpc "github.com/peoplesuite/platform-sdk-go/pkg/grpc"
 )
 
 // Config configures a Preferences client.

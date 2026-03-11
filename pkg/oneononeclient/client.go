@@ -7,8 +7,9 @@ import (
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 
-	sdkgrpc "github.com/peoplesuite/platform-sdk-go/pkg/grpc"
 	oneononev1 "peoplesuite/platform-contracts/gen/go/oneonone/v1"
+
+	sdkgrpc "github.com/peoplesuite/platform-sdk-go/pkg/grpc"
 )
 
 // Config configures a OneOnOne client.

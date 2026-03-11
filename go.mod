@@ -19,8 +19,10 @@ require (
 	google.golang.org/grpc v1.79.2
 	gopkg.in/DataDog/dd-trace-go.v1 v1.61.0
 	gopkg.in/yaml.v3 v3.0.1
-	peoplesuite/platform-contracts v0.0.0-20260311164747-32def9eae9ad
+	peoplesuite/platform-contracts v0.0.0-20260311124747-32def9eae9ad
 )
+
+replace peoplesuite/platform-contracts => github.com/peoplesuite/platform-contracts v0.0.0-20260311124747-32def9eae9ad
 
 require (
 	4d63.com/gocheckcompilerdirectives v1.3.0 // indirect

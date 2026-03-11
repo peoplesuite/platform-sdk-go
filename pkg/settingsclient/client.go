@@ -7,8 +7,9 @@ import (
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 
-	sdkgrpc "github.com/peoplesuite/platform-sdk-go/pkg/grpc"
 	settingsv1 "peoplesuite/platform-contracts/gen/go/settings/v1"
+
+	sdkgrpc "github.com/peoplesuite/platform-sdk-go/pkg/grpc"
 )
 
 // Config configures a Settings client.

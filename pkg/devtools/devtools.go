@@ -17,7 +17,6 @@ import (
 // gRPC server has begun listening, which would otherwise cause an immediate
 // connection failure and prevent /grpcui from being registered at all.
 type lazyGRPCUIHandler struct {
-	mu     sync.Mutex
 	init   sync.Once
 	ctx    context.Context
 	target string
@@ -41,7 +40,7 @@ func (h *lazyGRPCUIHandler) ensureInitialized() {
 			}
 		}
 
-		conn, err := grpc.DialContext(ctx, h.target, opts...)
+		conn, err := grpc.NewClient(h.target, opts...)
 		if err != nil {
 			h.err = err
 			return

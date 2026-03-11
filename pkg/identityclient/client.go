@@ -8,8 +8,9 @@ import (
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 
-	sdkgrpc "github.com/peoplesuite/platform-sdk-go/pkg/grpc"
 	identityv1 "peoplesuite/platform-contracts/gen/go/identity/v1"
+
+	sdkgrpc "github.com/peoplesuite/platform-sdk-go/pkg/grpc"
 )
 
 // Config configures an Identity client.
