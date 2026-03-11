@@ -10,6 +10,7 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+// RecoveryUnary returns a unary interceptor that recovers panics and returns an internal error.
 func RecoveryUnary(logger *zap.Logger) grpc.UnaryServerInterceptor {
 	return func(ctx context.Context, req any, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp any, err error) {
 
@@ -28,6 +29,7 @@ func RecoveryUnary(logger *zap.Logger) grpc.UnaryServerInterceptor {
 	}
 }
 
+// RecoveryStream returns a stream interceptor that recovers panics.
 func RecoveryStream(logger *zap.Logger) grpc.StreamServerInterceptor {
 	return func(srv any, ss grpc.ServerStream, info *grpc.StreamServerInfo, handler grpc.StreamHandler) (err error) {
 		defer func() {

@@ -7,6 +7,7 @@ import (
 	"net/http"
 )
 
+// DecodeJSONResponse reads the response body as JSON into target, or returns an HTTPError for non-2xx.
 func DecodeJSONResponse(resp *http.Response, target any) error {
 	defer func() { _ = resp.Body.Close() }()
 

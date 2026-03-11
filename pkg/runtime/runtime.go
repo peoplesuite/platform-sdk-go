@@ -9,6 +9,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// Runtime runs HTTP server, gRPC server, and workers until context is cancelled.
 type Runtime struct {
 	opts   Options
 	logger *zap.Logger
@@ -17,6 +18,7 @@ type Runtime struct {
 	grpcServer *grpcServer
 }
 
+// New creates a Runtime with the given options.
 func New(opts Options) (*Runtime, error) {
 
 	logger, err := initLogger(opts)
@@ -35,6 +37,7 @@ func New(opts Options) (*Runtime, error) {
 	return rt, nil
 }
 
+// Run starts HTTP, gRPC, and workers; it blocks until ctx is cancelled and then shuts down.
 func (r *Runtime) Run(ctx context.Context) error {
 
 	ctx, cancel := context.WithCancel(ctx)

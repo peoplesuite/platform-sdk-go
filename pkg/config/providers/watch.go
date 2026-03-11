@@ -8,6 +8,7 @@ import (
 	"github.com/fsnotify/fsnotify"
 )
 
+// WatchProvider loads config from a file and watches for changes.
 type WatchProvider struct {
 	Path     string
 	Decoder  Decoder
@@ -16,6 +17,7 @@ type WatchProvider struct {
 	watcher *fsnotify.Watcher
 }
 
+// NewWatch returns a WatchProvider that watches path and uses decoder.
 func NewWatch(path string, decoder Decoder, reload func() error) (*WatchProvider, error) {
 
 	w, err := fsnotify.NewWatcher()
@@ -31,10 +33,12 @@ func NewWatch(path string, decoder Decoder, reload func() error) (*WatchProvider
 	}, nil
 }
 
+// Name returns the provider name including the path.
 func (p *WatchProvider) Name() string {
 	return "watch:" + p.Path
 }
 
+// Load reads the file and decodes into cfg.
 func (p *WatchProvider) Load(cfg any) error {
 
 	data, err := readFile(p.Path)
@@ -49,6 +53,7 @@ func (p *WatchProvider) Load(cfg any) error {
 	return nil
 }
 
+// Start begins watching the file for changes.
 func (p *WatchProvider) Start() error {
 
 	dir := filepath.Dir(p.Path)

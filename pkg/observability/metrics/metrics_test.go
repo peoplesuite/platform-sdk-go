@@ -29,7 +29,7 @@ func TestMetrics_MethodsNoPanic(t *testing.T) {
 	if err != nil {
 		t.Skipf("New failed (no statsd listener): %v", err)
 	}
-	defer m.Close()
+	defer func() { _ = m.Close() }()
 
 	// Methods should not panic; they ignore send errors
 	m.Increment("n", nil)

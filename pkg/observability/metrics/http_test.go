@@ -11,7 +11,7 @@ func TestHTTPMiddleware_CallsNextHandler(t *testing.T) {
 	if err != nil {
 		t.Skipf("New failed: %v", err)
 	}
-	defer m.Close()
+	defer func() { _ = m.Close() }()
 
 	called := false
 	next := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

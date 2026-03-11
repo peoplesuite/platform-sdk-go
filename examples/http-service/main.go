@@ -17,7 +17,7 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
-		w.Write([]byte("ok"))
+		_, _ = w.Write([]byte("ok"))
 	})
 
 	handler := pkghttp.Chain(
@@ -42,5 +42,5 @@ func main() {
 		panic(err)
 	}
 
-	rt.Run(context.Background())
+	_ = rt.Run(context.Background())
 }

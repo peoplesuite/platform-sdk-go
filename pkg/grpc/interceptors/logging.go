@@ -9,6 +9,7 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+// LoggingUnary returns a unary interceptor that logs each request.
 func LoggingUnary(logger *zap.Logger) grpc.UnaryServerInterceptor {
 
 	return func(ctx context.Context, req any, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (any, error) {
@@ -27,6 +28,7 @@ func LoggingUnary(logger *zap.Logger) grpc.UnaryServerInterceptor {
 	}
 }
 
+// LoggingStream returns a stream interceptor that logs each stream.
 func LoggingStream(logger *zap.Logger) grpc.StreamServerInterceptor {
 	return func(srv any, ss grpc.ServerStream, info *grpc.StreamServerInfo, handler grpc.StreamHandler) error {
 		start := time.Now()

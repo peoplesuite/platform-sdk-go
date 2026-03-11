@@ -232,7 +232,7 @@ func TestManager_Endpoints_Integration(t *testing.T) {
 			if err != nil {
 				t.Fatalf("GET %s failed: %v", tt.endpoint, err)
 			}
-			defer resp.Body.Close()
+			defer func() { _ = resp.Body.Close() }()
 
 			if resp.StatusCode != tt.wantStatusCode {
 				body, _ := io.ReadAll(resp.Body)
@@ -261,7 +261,7 @@ func TestManager_GracefulShutdown(t *testing.T) {
 	if err != nil {
 		t.Fatalf("server not running: %v", err)
 	}
-	resp.Body.Close()
+	_ = resp.Body.Close()
 
 	// Shutdown with context
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)

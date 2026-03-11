@@ -3,6 +3,7 @@ package errors
 // Kind identifies the error category.
 type Kind int
 
+// Error kinds for HTTP/gRPC mapping.
 const (
 	KindInternal Kind = iota
 	KindInvalidArgument

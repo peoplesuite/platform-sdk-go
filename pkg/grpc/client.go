@@ -10,6 +10,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 )
 
+// ClientConfig configures a gRPC client connection.
 type ClientConfig struct {
 	Address string
 	Logger  *zap.Logger

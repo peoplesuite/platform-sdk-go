@@ -22,13 +22,13 @@ func TestClientPool_GetSameAddressReturnsSameConn(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Listen: %v", err)
 	}
-	defer lis.Close()
+	defer func() { _ = lis.Close() }()
 	go func() { _ = srv.Serve(lis) }()
 	defer srv.Stop()
 
 	addr := lis.Addr().String()
 	pool := NewClientPool(ClientConfig{Address: addr, Logger: zaptest.NewLogger(t)})
-	defer pool.Close()
+	defer func() { _ = pool.Close() }()
 
 	conn1, err := pool.Get(addr)
 	if err != nil {

@@ -42,7 +42,7 @@ func TestNewClientConn_WithRealServer(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Listen: %v", err)
 	}
-	defer lis.Close()
+	defer func() { _ = lis.Close() }()
 	go func() { _ = srv.Serve(lis) }()
 	defer srv.Stop()
 
@@ -53,7 +53,7 @@ func TestNewClientConn_WithRealServer(t *testing.T) {
 	if err != nil {
 		t.Fatalf("NewClientConn: %v", err)
 	}
-	defer conn.Close()
+	defer func() { _ = conn.Close() }()
 	if conn == nil {
 		t.Fatal("conn is nil")
 	}
@@ -66,7 +66,7 @@ func TestNewClientConn_WithInterceptors(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Listen: %v", err)
 	}
-	defer lis.Close()
+	defer func() { _ = lis.Close() }()
 	go func() { _ = srv.Serve(lis) }()
 	defer srv.Stop()
 
@@ -90,7 +90,7 @@ func TestNewClientConn_WithInterceptors(t *testing.T) {
 	if err != nil {
 		t.Fatalf("NewClientConn: %v", err)
 	}
-	defer conn.Close()
+	defer func() { _ = conn.Close() }()
 	if !unaryCalled && !streamCalled {
 		// At least chain was used; we may only hit unary for health check
 		t.Log("interceptors registered (unary/stream may be hit on actual RPC)")
@@ -104,7 +104,7 @@ func TestNewClientConn_WithoutLogger(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Listen: %v", err)
 	}
-	defer lis.Close()
+	defer func() { _ = lis.Close() }()
 	go func() { _ = srv.Serve(lis) }()
 	defer srv.Stop()
 
@@ -112,5 +112,5 @@ func TestNewClientConn_WithoutLogger(t *testing.T) {
 	if err != nil {
 		t.Fatalf("NewClientConn: %v", err)
 	}
-	defer conn.Close()
+	defer func() { _ = conn.Close() }()
 }

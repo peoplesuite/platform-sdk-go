@@ -10,6 +10,7 @@ import (
 	"peoplesuite/platform-sdk-go/pkg/observability"
 )
 
+// MetricsUnary returns a unary interceptor that records request metrics.
 func MetricsUnary(m *observability.Metrics) grpc.UnaryServerInterceptor {
 
 	return func(
@@ -40,6 +41,7 @@ func MetricsUnary(m *observability.Metrics) grpc.UnaryServerInterceptor {
 	}
 }
 
+// MetricsStream returns a stream interceptor that records stream metrics.
 func MetricsStream(m *observability.Metrics) grpc.StreamServerInterceptor {
 
 	return func(

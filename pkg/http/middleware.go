@@ -32,6 +32,7 @@ func Chain(middlewares ...Middleware) Middleware {
 	}
 }
 
+// RequestIDHeader is the HTTP header used for request ID.
 const RequestIDHeader = "X-Request-ID"
 
 type reqIDKey struct{}

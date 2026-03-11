@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// HTTPMiddleware returns middleware that records request metrics.
 func HTTPMiddleware(m *Metrics) func(http.Handler) http.Handler {
 
 	return func(next http.Handler) http.Handler {

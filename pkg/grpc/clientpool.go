@@ -8,6 +8,7 @@ import (
 	"google.golang.org/grpc"
 )
 
+// ClientPool caches gRPC client connections by address.
 type ClientPool struct {
 	mu      sync.RWMutex
 	clients map[string]*grpc.ClientConn
@@ -15,6 +16,7 @@ type ClientPool struct {
 	cfg     ClientConfig
 }
 
+// NewClientPool returns a new ClientPool with the given config.
 func NewClientPool(cfg ClientConfig) *ClientPool {
 	return &ClientPool{
 		clients: make(map[string]*grpc.ClientConn),

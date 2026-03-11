@@ -288,7 +288,7 @@ func TestRun_WithHTTPAndGRPC_GracefulShutdown(t *testing.T) {
 	if err != nil {
 		t.Logf("HTTP GET (may be timing): %v", err)
 	} else {
-		resp.Body.Close()
+		_ = resp.Body.Close()
 		if resp.StatusCode != http.StatusOK {
 			t.Errorf("GET / = %d, want 200", resp.StatusCode)
 		}

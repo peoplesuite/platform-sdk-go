@@ -12,6 +12,7 @@ import (
 	"peoplesuite/platform-sdk-go/pkg/observability"
 )
 
+// ServerConfig configures a gRPC server and its interceptors.
 type ServerConfig struct {
 	Logger           *zap.Logger
 	Metrics          *observability.Metrics
@@ -22,6 +23,7 @@ type ServerConfig struct {
 	ExtraStream []grpc.StreamServerInterceptor
 }
 
+// NewServer builds a gRPC server with recovery, tracing, metrics, logging, optional auth, and health.
 func NewServer(cfg ServerConfig) *grpc.Server {
 
 	var unary []grpc.UnaryServerInterceptor
@@ -85,6 +87,7 @@ func NewServer(cfg ServerConfig) *grpc.Server {
 	return srv
 }
 
+// Serve listens on port and serves the gRPC server until the context is cancelled.
 func Serve(
 	srv *grpc.Server,
 	port int,

@@ -10,8 +10,10 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+// AuthFunc authenticates a token and returns an updated context or error.
 type AuthFunc func(ctx context.Context, token string) (context.Context, error)
 
+// AuthUnary returns a unary interceptor that calls authFunc with the authorization metadata.
 func AuthUnary(authFunc AuthFunc, logger *zap.Logger) grpc.UnaryServerInterceptor {
 
 	return func(ctx context.Context, req any, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (any, error) {

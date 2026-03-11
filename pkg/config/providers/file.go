@@ -5,13 +5,16 @@ import (
 	"os"
 )
 
+// Decoder decodes raw bytes into cfg.
 type Decoder func(data []byte, cfg any) error
 
+// FileProvider loads configuration from a file using a Decoder.
 type FileProvider struct {
 	Path    string
 	Decoder Decoder
 }
 
+// NewFile returns a FileProvider that reads from path and decodes with decoder.
 func NewFile(path string, decoder Decoder) *FileProvider {
 	return &FileProvider{
 		Path:    path,
@@ -19,10 +22,12 @@ func NewFile(path string, decoder Decoder) *FileProvider {
 	}
 }
 
+// Name returns the provider name including the path.
 func (p *FileProvider) Name() string {
 	return "file:" + p.Path
 }
 
+// Load reads the file and decodes into cfg.
 func (p *FileProvider) Load(cfg any) error {
 
 	data, err := os.ReadFile(p.Path)

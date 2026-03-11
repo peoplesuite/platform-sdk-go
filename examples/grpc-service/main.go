@@ -32,5 +32,5 @@ func main() {
 		panic(err)
 	}
 
-	rt.Run(context.Background())
+	_ = rt.Run(context.Background())
 }

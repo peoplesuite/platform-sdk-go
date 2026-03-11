@@ -10,6 +10,7 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+// TracingUnary returns a unary interceptor that creates a span per request.
 func TracingUnary() grpc.UnaryServerInterceptor {
 
 	tracer := otel.Tracer("pkg/grpc")
@@ -48,6 +49,7 @@ func TracingUnary() grpc.UnaryServerInterceptor {
 	}
 }
 
+// TracingStream returns a stream interceptor that creates a span per stream.
 func TracingStream() grpc.StreamServerInterceptor {
 
 	tracer := otel.Tracer("pkg/grpc")

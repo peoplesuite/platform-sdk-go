@@ -7,6 +7,7 @@ import (
 	"google.golang.org/grpc/status"
 )
 
+// HTTPStatus returns the HTTP status code for err, or 500 if not a platform Error.
 func HTTPStatus(err error) int {
 	var e *Error
 
@@ -17,6 +18,7 @@ func HTTPStatus(err error) int {
 	return 500
 }
 
+// HTTPMessage returns the message to send over HTTP for err.
 func HTTPMessage(err error) string {
 	var e *Error
 
@@ -31,6 +33,7 @@ func HTTPMessage(err error) string {
 	return "internal error"
 }
 
+// GetKind returns the Kind of err, or KindInternal if not a platform Error.
 func GetKind(err error) Kind {
 	var e *Error
 
@@ -41,6 +44,7 @@ func GetKind(err error) Kind {
 	return KindInternal
 }
 
+// ToGRPC converts a platform error to a gRPC status error.
 func ToGRPC(err error) error {
 	if err == nil {
 		return nil
@@ -51,6 +55,7 @@ func ToGRPC(err error) error {
 	return status.Error(code, HTTPMessage(err))
 }
 
+// FromGRPC converts a gRPC status error to a platform Error, or nil if not a status error.
 func FromGRPC(err error) *Error {
 
 	if err == nil {

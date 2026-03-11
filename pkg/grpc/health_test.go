@@ -18,7 +18,7 @@ func TestRegisterHealth_CheckReturnsServing(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Listen: %v", err)
 	}
-	defer lis.Close()
+	defer func() { _ = lis.Close() }()
 
 	go func() { _ = srv.Serve(lis) }()
 	defer srv.Stop()
@@ -28,7 +28,7 @@ func TestRegisterHealth_CheckReturnsServing(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Dial: %v", err)
 	}
-	defer conn.Close()
+	defer func() { _ = conn.Close() }()
 
 	client := healthpb.NewHealthClient(conn)
 	ctx := context.Background()

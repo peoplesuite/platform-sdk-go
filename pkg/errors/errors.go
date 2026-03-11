@@ -21,14 +21,17 @@ func (e *Error) Unwrap() error {
 	return e.cause
 }
 
+// Status returns the HTTP status code for the error.
 func (e *Error) Status() int {
 	return e.status
 }
 
+// Kind returns the error kind.
 func (e *Error) Kind() Kind {
 	return e.kind
 }
 
+// Message returns the error message without the cause.
 func (e *Error) Message() string {
 	return e.message
 }

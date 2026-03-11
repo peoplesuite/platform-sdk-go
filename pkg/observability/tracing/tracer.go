@@ -4,6 +4,7 @@ import (
 	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 )
 
+// Config configures the Datadog tracer.
 type Config struct {
 	ServiceName    string
 	ServiceVersion string

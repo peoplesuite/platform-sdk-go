@@ -21,6 +21,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
+// Client is an HTTP client with JSON helpers, retry, and optional tracing.
 type Client struct {
 	httpClient *http.Client
 	baseURL    string
@@ -30,6 +31,7 @@ type Client struct {
 	tracer     trace.Tracer
 }
 
+// New returns a new Client with the given options.
 func New(opts Options) *Client {
 	retryMax := opts.RetryMax
 	if retryMax <= 0 {
@@ -144,6 +146,7 @@ func (c *Client) do(ctx context.Context, method, urlStr string, createReq create
 	return c.doWithRetry(ctx, createReq)
 }
 
+// DoJSON performs a request with JSON request/response bodies.
 func (c *Client) DoJSON(
 	ctx context.Context,
 	method string,

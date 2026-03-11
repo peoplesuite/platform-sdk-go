@@ -134,7 +134,7 @@ func (p *noopProvider) Load(_ any) error { return nil }
 
 func TestLoader_Load_ValidateError(t *testing.T) {
 	cfg := &validateFailConfig{}
-	cfg.loaderConfig.Version = CurrentConfigVersion
+	cfg.Version = CurrentConfigVersion
 
 	loader := NewLoader(&noopProvider{name: "noop"})
 
