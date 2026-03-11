@@ -1,3 +1,5 @@
+version: "2"
+
 run:
   timeout: 5m
   tests: true
@@ -13,9 +15,8 @@ linters:
     - ineffassign
     - unused
     - misspell
-
-linters-settings:
-  revive:
-    rules:
-      - name: var-naming
-      - name: exported
+  settings:
+    revive:
+      rules:
+        - name: var-naming
+        - name: exported
