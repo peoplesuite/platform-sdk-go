@@ -98,8 +98,6 @@ platform-sdk-go
 │   ├── grpc-service
 │   └── worker
 │
-└── scripts
-
 ```
 
 ---

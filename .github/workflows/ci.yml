@@ -101,9 +101,9 @@ jobs:
             new_tag="v0.1.0"
           else
             ver=${latest#v}
-            major=$(echo "$ver" | awk -F. '{print $1}')
-            minor=$(echo "$ver" | awk -F. '[.]' '{print $2}')
-            patch=$(echo "$ver" | awk -F. '[.]' '{print $3}')
+            major=$(echo "$ver" | awk -F '[.]' '{print $1}')
+            minor=$(echo "$ver" | awk -F '[.]' '{print $2}')
+            patch=$(echo "$ver" | awk -F '[.]' '{print $3}')
             patch=$((patch + 1))
             new_tag="v${major}.${minor}.${patch}"
           fi
