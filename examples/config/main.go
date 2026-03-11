@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
-	"peoplesuite/platform-sdk-go/examples/shared"
-	"peoplesuite/platform-sdk-go/pkg/config"
-	"peoplesuite/platform-sdk-go/pkg/config/providers"
+	"github.com/peoplesuite/platform-sdk-go/examples/shared"
+	"github.com/peoplesuite/platform-sdk-go/pkg/config"
+	"github.com/peoplesuite/platform-sdk-go/pkg/config/providers"
 )
 
 func main() {

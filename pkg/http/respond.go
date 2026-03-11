@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	pkgerr "peoplesuite/platform-sdk-go/pkg/errors"
+	pkgerr "github.com/peoplesuite/platform-sdk-go/pkg/errors"
 )
 
 // JSON writes a JSON response with the given status code.

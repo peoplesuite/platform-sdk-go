@@ -6,7 +6,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"peoplesuite/platform-sdk-go/pkg/errors"
+	"github.com/peoplesuite/platform-sdk-go/pkg/errors"
 )
 
 func TestToStatus_Nil(t *testing.T) {

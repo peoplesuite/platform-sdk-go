@@ -3,7 +3,7 @@ package runtime
 import (
 	"context"
 
-	"peoplesuite/platform-sdk-go/pkg/health"
+	"github.com/peoplesuite/platform-sdk-go/pkg/health"
 )
 
 // initHealth is reserved for optional health HTTP server (e.g. /livez, /readyz).

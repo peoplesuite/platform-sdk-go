@@ -8,8 +8,8 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
-	"peoplesuite/platform-sdk-go/pkg/grpc/interceptors"
-	"peoplesuite/platform-sdk-go/pkg/observability"
+	"github.com/peoplesuite/platform-sdk-go/pkg/grpc/interceptors"
+	"github.com/peoplesuite/platform-sdk-go/pkg/observability"
 )
 
 // ServerConfig configures a gRPC server and its interceptors.

@@ -7,7 +7,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/status"
 
-	"peoplesuite/platform-sdk-go/pkg/observability"
+	"github.com/peoplesuite/platform-sdk-go/pkg/observability"
 )
 
 // MetricsUnary returns a unary interceptor that records request metrics.

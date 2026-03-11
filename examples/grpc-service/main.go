@@ -5,8 +5,8 @@ import (
 
 	"go.uber.org/zap"
 
-	pkggrpc "peoplesuite/platform-sdk-go/pkg/grpc"
-	"peoplesuite/platform-sdk-go/pkg/runtime"
+	pkggrpc "github.com/peoplesuite/platform-sdk-go/pkg/grpc"
+	"github.com/peoplesuite/platform-sdk-go/pkg/runtime"
 )
 
 func main() {

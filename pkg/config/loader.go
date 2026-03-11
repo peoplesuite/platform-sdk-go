@@ -3,7 +3,7 @@ package config
 import (
 	"fmt"
 
-	"peoplesuite/platform-sdk-go/pkg/config/providers"
+	"github.com/peoplesuite/platform-sdk-go/pkg/config/providers"
 )
 
 // Loader loads configuration by running a sequence of providers.

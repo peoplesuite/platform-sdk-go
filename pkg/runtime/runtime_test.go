@@ -10,7 +10,7 @@ import (
 
 	"google.golang.org/grpc"
 
-	grpcpkg "peoplesuite/platform-sdk-go/pkg/grpc"
+	grpcpkg "github.com/peoplesuite/platform-sdk-go/pkg/grpc"
 )
 
 func TestNew_MinimalOptions(t *testing.T) {

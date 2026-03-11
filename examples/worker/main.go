@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"peoplesuite/platform-sdk-go/pkg/runtime"
+	"github.com/peoplesuite/platform-sdk-go/pkg/runtime"
 )
 
 func main() {

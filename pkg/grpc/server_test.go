@@ -6,7 +6,7 @@ import (
 	"go.uber.org/zap/zaptest"
 	"google.golang.org/grpc"
 
-	"peoplesuite/platform-sdk-go/pkg/observability"
+	"github.com/peoplesuite/platform-sdk-go/pkg/observability"
 )
 
 func TestNewServer_NonNil(t *testing.T) {

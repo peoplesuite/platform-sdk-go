@@ -3,8 +3,8 @@ package runtime
 import (
 	"go.uber.org/zap"
 
-	"peoplesuite/platform-sdk-go/pkg/observability/logging"
-	"peoplesuite/platform-sdk-go/pkg/observability/tracing"
+	"github.com/peoplesuite/platform-sdk-go/pkg/observability/logging"
+	"github.com/peoplesuite/platform-sdk-go/pkg/observability/tracing"
 )
 
 func initLogger(opts Options) (*zap.Logger, error) {

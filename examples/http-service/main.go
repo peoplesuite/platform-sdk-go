@@ -7,8 +7,8 @@ import (
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 
-	pkghttp "peoplesuite/platform-sdk-go/pkg/http"
-	"peoplesuite/platform-sdk-go/pkg/runtime"
+	pkghttp "github.com/peoplesuite/platform-sdk-go/pkg/http"
+	"github.com/peoplesuite/platform-sdk-go/pkg/runtime"
 )
 
 func main() {

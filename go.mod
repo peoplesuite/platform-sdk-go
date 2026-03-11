@@ -1,4 +1,4 @@
-module peoplesuite/platform-sdk-go
+module github.com/peoplesuite/platform-sdk-go
 
 go 1.25.0
 

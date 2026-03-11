@@ -9,7 +9,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"peoplesuite/platform-sdk-go/pkg/observability"
+	"github.com/peoplesuite/platform-sdk-go/pkg/observability"
 )
 
 func TestMetricsUnary_SuccessUpdatesMetrics(t *testing.T) {

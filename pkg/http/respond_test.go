@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	pkgerr "peoplesuite/platform-sdk-go/pkg/errors"
+	pkgerr "github.com/peoplesuite/platform-sdk-go/pkg/errors"
 )
 
 func TestJSON_WithBodyAndNil(t *testing.T) {

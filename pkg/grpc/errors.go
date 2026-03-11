@@ -1,6 +1,6 @@
 package grpc
 
-import "peoplesuite/platform-sdk-go/pkg/errors"
+import "github.com/peoplesuite/platform-sdk-go/pkg/errors"
 
 // ToStatus converts a platform error to a gRPC status error.
 func ToStatus(err error) error {

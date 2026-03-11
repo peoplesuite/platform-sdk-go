@@ -13,7 +13,7 @@ import (
 	"go.opentelemetry.io/otel/trace"
 	"go.uber.org/zap"
 
-	"peoplesuite/platform-sdk-go/pkg/observability"
+	"github.com/peoplesuite/platform-sdk-go/pkg/observability"
 )
 
 // Middleware is a function that wraps an http.Handler.

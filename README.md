@@ -48,7 +48,7 @@ import (
 
 "google.golang.org/grpc"
 
-"peoplesuite/platform-sdk-go/pkg/runtime"
+"github.com/peoplesuite/platform-sdk-go/pkg/runtime"
 )
 
 func main() {

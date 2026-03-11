@@ -8,7 +8,7 @@ import (
 
 	"go.uber.org/zap/zaptest"
 
-	"peoplesuite/platform-sdk-go/pkg/observability"
+	"github.com/peoplesuite/platform-sdk-go/pkg/observability"
 )
 
 func TestChainOrder(t *testing.T) {

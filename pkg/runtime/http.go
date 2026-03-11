@@ -7,7 +7,7 @@ import (
 
 	"go.uber.org/zap"
 
-	pkghttp "peoplesuite/platform-sdk-go/pkg/http"
+	pkghttp "github.com/peoplesuite/platform-sdk-go/pkg/http"
 )
 
 type httpServer struct {
