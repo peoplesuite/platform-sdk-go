@@ -22,10 +22,26 @@ type Options struct {
 	HTTPHandler http.Handler
 	GRPCServer  *grpc.Server
 
+	// DevTools controls optional developer tooling endpoints such as /grpcui and /proto-docs.
+	DevTools DevToolsConfig
+
 	Workers []Worker
 
 	StartHooks []func(context.Context) error
 	StopHooks  []func(context.Context) error
+}
+
+// DevToolsConfig configures optional developer tooling endpoints.
+type DevToolsConfig struct {
+	// Enabled toggles all dev tools. When false, runtime does not attach any dev routes.
+	Enabled bool
+
+	// GRPCTarget is the address grpcui should use when connecting via reflection, e.g. "localhost:9091".
+	GRPCTarget string
+
+	// ProtoDocsDir is the directory containing static documentation generated from protobuf definitions.
+	// Typically this is the buf pseudomuto-doc output directory, for example "./docs/proto".
+	ProtoDocsDir string
 }
 
 // DefaultOptions returns options with default HTTP and gRPC ports.
